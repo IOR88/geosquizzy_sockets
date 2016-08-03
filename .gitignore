@@ -1,0 +1,5 @@
+**/*.pyc
+.idea
+setup_ngnix.sh
+gs_socket_ngnix.conf
+logs
