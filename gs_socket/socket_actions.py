@@ -6,9 +6,11 @@ class GenericSocketActions:
     def gather_msg(self, chunk, conn, size):
         buffer = chunk
         while True:
-            buffer += conn(size)
             if self.is_msg_completed(buffer):
                 break
+
+            buffer += conn(size)
+
         return buffer
 
 
@@ -44,4 +46,7 @@ class ClientSocketActions(GenericSocketActions):
         self.send(data)
 
     def action_read(self, size):
-        return self.recev()
+        return self.recv(size)
+
+    def action_disconnect(self):
+        self.close()
